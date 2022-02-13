@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Button from 'components/Button'
+import Link from 'next/link'
 
 function About() {
   return (
@@ -14,7 +15,9 @@ function About() {
         <p className="mt-2">
           We value your ambition and strive to deliver solutions.
         </p>
-        <Button className="mt-6">Services</Button>
+        <Link href="/#services" passHref>
+          <Button className="mt-6">Services</Button>
+        </Link>
       </div>
       <div className="w-full md:w-3/5 relative md:h-full h-2/5 mt-5 md:mt-0">
         <Image

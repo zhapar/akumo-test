@@ -15,15 +15,15 @@ export const links = [
   },
   {
     title: 'Services',
-    link: '#services',
+    link: '/#services',
   },
   {
     title: 'Events',
-    link: '#events',
+    link: '/#events',
   },
   {
     title: 'Contact',
-    link: '#contact',
+    link: '/#contact',
   },
 ]
 

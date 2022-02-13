@@ -6,13 +6,15 @@ import React from 'react'
 
 function Events() {
   return (
-    <section className="flex flex-col-reverse md:flex-row justify-between container items-center gap-20 md:h-[60vh] lg:py-10 mt-10">
+    <section
+      id="events"
+      className="flex flex-col-reverse md:flex-row justify-between container items-center gap-20 md:h-[60vh] lg:pt-24 lg:pb-10 mt-10">
       <div className="w-full md:w-[calc(50%+3rem)] md:pr-14">
         <h2>Have an event you want to host?</h2>
         <div className="lg:pr-10">
           <p className="mt-5 ">
-            Networking is valuable source of new ideas and perspective! Join our
-            events or host one yourself!
+            Networking is valuable source of new ideas and perspectives! Join
+            our events or host one yourself!
           </p>
           <Input name="event-host-name" className="mt-8" placeholder="Name" />
           <Input

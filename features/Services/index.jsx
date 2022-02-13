@@ -9,7 +9,7 @@ const services = [
     name: 'Sessions',
     imageSrc: '/sessions.svg',
     description: [
-      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to excecute better out there.',
+      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to execute better out there.',
     ],
   },
   {
@@ -17,7 +17,7 @@ const services = [
     name: 'Certifications',
     imageSrc: '/certifications.svg',
     description: [
-      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to excecute better out there.',
+      'Certifications provide in-depth knowledge and validate your expertise. Our content is built by professionals and updated frequently to keep you in demand.',
     ],
   },
   {
@@ -25,7 +25,7 @@ const services = [
     name: 'Career Coaching',
     imageSrc: '/career-coaching.svg',
     description: [
-      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to excecute better out there.',
+      'We have one goal - helping you achieve yours. We know you have the capacity to perform at a higher level, let us provide the guidance and the support you need. ',
     ],
   },
   {
@@ -33,7 +33,7 @@ const services = [
     name: 'Community',
     imageSrc: '/community.svg',
     description: [
-      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to excecute better out there.',
+      "We help communities with their technical needs. Whether it's consulting or defined implementation, aKumoSolutions is here to support your community to grow along with today’s technology.",
     ],
   },
   {
@@ -41,7 +41,7 @@ const services = [
     name: 'Business',
     imageSrc: '/business.svg',
     description: [
-      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to excecute better out there.',
+      'Helping Small Businesses is one of our primary objectives that aligns with our company vision. As technology grows at an incredibly high speed, we are here to support smaller businesses with their technical growth. Whether its simple domain name, emailing, website, or custom application. We help your business to better grasp the opportunities of technological advancement of today’s era.',
     ],
   },
   {
@@ -49,7 +49,7 @@ const services = [
     name: 'Bootcamp Experience',
     imageSrc: '/bootcamp-experience.svg',
     description: [
-      'Our sessions involve hands-on practice with real-life scenarios and support by experts in the field. Master your skills in here, to excecute better out there.',
+      'aKumoSolutions provides a well thought out curriculum with precise requirements to become a Cloud/DevOps engineer. Throughout your bootcamp experience you will shape both your technical/soft skills and engineering mindset. We strongly believe that critical thinking and assertiveness is as important as your technical knowledge.',
     ],
   },
 ]
@@ -61,7 +61,7 @@ function Services() {
 
   return (
     <>
-      <section id="services" className="container py-10">
+      <section id="services" className="container pt-20 pb-10 ">
         <h2>Services</h2>
         <div className="grid grid-cols-3 gap-5 mt-12">
           {services.map((props) => (

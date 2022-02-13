@@ -20,9 +20,8 @@ function Subscription() {
       <div className="w-full md:w-1/2">
         <h2>Subscribe for new events!</h2>
         <p className="mt-5">
-          There are a few strategies being deployed here, but the most critical
-          one is layering. Instead of a single shadow, we stack 5 or 6
-          individual shadow layers.{' '}
+          Get technology news and updates on exciting new offers and services
+          from aKumoSolutions!
         </p>
         <Input
           name="subsription-email"
