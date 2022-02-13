@@ -28,7 +28,12 @@ function Contact() {
           className="mt-5"
           placeholder="Message"
         />
-        <Button className="mt-6">Send Message</Button>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="mailto:support@akumosolutions.io">
+          <Button className="mt-6">Send Message</Button>
+        </a>
       </div>
     </section>
   )

@@ -41,7 +41,7 @@ const services = [
     name: 'Business',
     imageSrc: '/business.svg',
     description: [
-      'Helping Small Businesses is one of our primary objectives that aligns with our company vision. As technology grows at an incredibly high speed, we are here to support smaller businesses with their technical growth. Whether its simple domain name, emailing, website, or custom application. We help your business to better grasp the opportunities of technological advancement of today’s era.',
+      'Helping Small Businesses is one of our primary objectives that aligns with our company vision. As technology grows at an incredibly high speed, we are here to support smaller businesses with their technical growth. Whether its simple domain name, emailing, website, or custom application, we help your business to better grasp the opportunities of technological advancement of today’s era.',
     ],
   },
   {

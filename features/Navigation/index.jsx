@@ -30,15 +30,15 @@ export const links = [
 export const contacts = [
   {
     Icon: FacebookLogo,
-    link: 'https://github.com/zhapar',
+    link: 'https://www.facebook.com/AKumoSolutions-100763001568331/',
   },
   {
     Icon: TelegramLogo,
-    link: 'mailto:zhapar28@gmail.com',
+    link: 'https://t.me/akumosolutions',
   },
   {
     Icon: InstagramLogo,
-    link: 'https://www.linkedin.com/in/zhapar-manas-uulu-81b9541bb/',
+    link: 'https://www.instagram.com/akumosolutions/',
   },
 ]
 
