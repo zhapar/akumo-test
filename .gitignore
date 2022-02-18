@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+## terraform
+*.states
+*.tfvars
+.terraform
+
 # next.js
 /.next/
 /out/
