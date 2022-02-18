@@ -23,7 +23,7 @@ resource "aws_alb" "application_load_balancer" {
   internal           = true
   load_balancer_type = "application"
   subnets            = ["subnet-041a82b4a7e278099", "subnet-0cfb5c7dfd734e87f"]
-  security_groups    = [aws_security_group.elb_sg.id]
+  security_groups    = [aws_security_group.alb_sg.id]
 
   tags = {
     Name        = "akumosolutions-ecs-alb-alb"
