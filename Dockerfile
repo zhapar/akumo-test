@@ -1,55 +1,48 @@
-# FROM node:alpine
+# Install dependencies only when needed
+FROM node:16-alpine AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# RUN mkdir -p /usr/src/app
-# ENV PORT 3000
+# If using npm with a `package-lock.json` comment out above and use below instead
+# COPY package.json package-lock.json ./ 
+# RUN npm ci
 
-# WORKDIR /usr/src/app
+# Rebuild the source code only when needed
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
-# COPY package.json /usr/src/app
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry during the build.
+# ENV NEXT_TELEMETRY_DISABLED 1
 
-# # Production use node instead of root
-# # USER node
-
-# RUN npm install  \
-#     npm run build
-
-# COPY ./app/ /usr/src/app
-
-# EXPOSE 3000
-
-# CMD [ "npm", "run", "start" ]
-
-FROM node:12-alpine AS BUILD_IMAGE
-
-# # couchbase sdk requirements
-# RUN apk update && apk add python make g++ && rm -rf /var/cache/apk/*
-
-WORKDIR /usr/src/app
-
-COPY app/package.json .
-
-# install dependencies
-RUN yarn --frozen-lockfile
-
-COPY ./app .
-
-# build application
 RUN npm run build
 
-# remove development dependencies
-RUN npm prune 
+# Production image, copy all the files and run next
+FROM node:16-alpine AS runner
+WORKDIR /app
 
-#--production
+ENV NODE_ENV production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+# ENV NEXT_TELEMETRY_DISABLED 1
 
-FROM node:12-alpine
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
-WORKDIR /usr/src/app
+# You only need to copy next.config.js if you are NOT using the default configuration
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
 
-# copy from build image
-COPY --from=BUILD_IMAGE /usr/src/app/package.json .
-COPY --from=BUILD_IMAGE /usr/src/app/build ./build
-COPY --from=BUILD_IMAGE /usr/src/app/node_modules ./node_modules
 
 EXPOSE 3000
+ENV PORT 3000
 
 CMD [ "npm", "run", "start" ]
