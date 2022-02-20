@@ -20,7 +20,7 @@ resource "aws_ecs_service" "ecs-ec2-akumotech-akumosolutions" {
 
 resource "aws_alb" "application_load_balancer" {
   name               = "akumosolutions-ecs-alb"
-  internal           = true
+  internal           = false
   load_balancer_type = "application"
   subnets            = ["subnet-041a82b4a7e278099", "subnet-0cfb5c7dfd734e87f"]
   security_groups    = [aws_security_group.alb_sg.id]

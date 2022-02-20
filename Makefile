@@ -26,11 +26,10 @@ plan-dev:
 	cd terraform/stacks; tfswitch; terraform init
 	cd terraform/stacks; tfswitch; terraform plan -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars'
 
-apply-dev: ecr-build
+apply-dev:
 	$(eval ECR_IMAGE_VERSION := "$(shell git rev-parse HEAD)")
 	cd terraform/stacks; tfswitch; terraform init
 	cd terraform/stacks; tfswitch; terraform apply -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars' -auto-approve
-
 
   ## PROD
 plan-prod:
