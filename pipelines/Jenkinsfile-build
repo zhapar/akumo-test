@@ -43,7 +43,6 @@ pipeline {
       steps {
          build job: 'akumosolutions-deploy'
       }
-    }
   }
 
   post('Clean Workspace') {
