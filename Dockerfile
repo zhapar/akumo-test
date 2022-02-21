@@ -31,8 +31,8 @@ ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nodejs \
-    adduser --system --uid 1001 nextjs
+# RUN addgroup -S nodejs && adduser -S appuser -G nodejs
+# USER appuser
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY --from=builder /app/next.config.js ./
