@@ -18,7 +18,6 @@ pipeline {
         }
       }
     }
-  }
 
     stage('Clone Repo') {
       steps {
@@ -28,12 +27,6 @@ pipeline {
         git branch: 'main', url: 'git@github.com:akumotech/akumosolutions-v2.git'
       }
     }
-
-    // stage('ECR Apply') {
-    //   steps {
-    //       sh 'make ecr-apply-dev'
-    //   }
-    // }
 
     stage('DOCKER BUILD'){
       steps {
@@ -45,6 +38,7 @@ pipeline {
       steps {
          build job: 'akumosolutions-deploy'
       }
+    }
   }
 
   post('Clean Workspace') {
