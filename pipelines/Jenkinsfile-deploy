@@ -36,13 +36,13 @@ pipeline {
 
     stage('Plan') {
       steps {
-        sh 'plan-dev'
+        sh 'make plan-dev'
      }
     }
     
     stage('Apply') {
       steps {
-         sh 'apply-dev'
+         sh 'make apply-dev'
       }
     }
   }

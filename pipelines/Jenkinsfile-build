@@ -30,7 +30,7 @@ pipeline {
 
     stage('DOCKER BUILD'){
       steps {
-        sh 'ecr-build'
+        sh 'make ecr-build'
      }
     }
     
