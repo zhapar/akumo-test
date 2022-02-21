@@ -16,7 +16,7 @@ ecr-apply-prod:
 
   ## BUILD
 ecr-build:
-	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 140316374689.dkr.ecr.us-east-1.amazonaws.com
+	aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 140316374689.dkr.ecr.us-east-1.amazonaws.com
 	$(eval IMAGE_TAG := "$(shell git rev-parse HEAD)")
 	$(eval IMAGE_URL := "140316374689.dkr.ecr.us-east-1.amazonaws.com/akumosolutions")
 	docker build -t $(IMAGE_URL):$(IMAGE_TAG) .
