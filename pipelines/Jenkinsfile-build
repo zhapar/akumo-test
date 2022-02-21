@@ -1,0 +1,59 @@
+pipeline {
+  agent any
+  options {
+  ansiColor('xterm')
+  }
+  stages{
+    stage('Setup Parameters') {
+      steps {
+        script {
+          properties([
+            parameters([
+              choice(
+                choices: ['build'],
+                name: 'Action'
+              )
+            ])
+          ])
+        }
+      }
+    }
+
+    stage('Clone Repo') {
+      steps {
+        echo "###Cleaning Workspace###"
+        deleteDir()
+        echo "###Cloning Repo###"
+        git branch: 'main', url: 'git@github.com:akumotech/akumosolutions-v2.git'
+      }
+    }
+
+    // stage('ECR Apply') {
+    //   steps {
+    //       sh 'make ecr-apply-dev'
+    //   }
+    // }
+
+    stage('DOCKER BUILD'){
+      steps {
+        sh 'ecr-build'
+    }
+    
+    stage('Trigger Build') {
+      steps {
+         build job: 'akumosolutions-deploy'
+      }
+    }
+  }
+
+  post('Clean Workspace') {
+    always {
+      echo "###Cleaning Workspace###"
+      cleanWs()
+    }
+    success {
+      echo '###Send Slack Notification###'
+      slackSend(color: "good", message: "Job '${env.JOB_NAME}' '${env.Action}' was Successful")
+    }
+  }
+}

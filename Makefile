@@ -2,6 +2,18 @@ SHELL := /bin/bash
 
 ## DOCKER (ECR)
 
+ecr-apply-dev:
+	cd terraform/shared; tfswitch; terraform init
+	cd terraform/shared; tfswitch; terraform validate
+	cd terraform/stacks; tfswitch; terraform plan -var-file='dev.tfvars'
+	cd terraform/stacks; tfswitch; terraform apply -var-file='dev.tfvars' -auto-approve
+
+ecr-apply-prod:
+	cd terraform/shared; tfswitch; terraform init
+	cd terraform/shared; tfswitch; terraform validate
+	cd terraform/stacks; tfswitch; terraform plan -var-file='prod.tfvars'
+	cd terraform/stacks; tfswitch; terraform apply -var-file='prod.tfvars' -auto-approve
+
   ## BUILD
 ecr-build:
 	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 140316374689.dkr.ecr.us-east-1.amazonaws.com
