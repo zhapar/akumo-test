@@ -21,8 +21,8 @@ pipeline {
 
     stage('Clone Repo') {
       steps {
-        echo "###Cleaning Workspace###"
-        deleteDir()
+        // echo "###Cleaning Workspace###"
+        // deleteDir()
         echo "###Cloning Repo###"
         git branch: 'main', url: 'git@github.com:akumotech/akumosolutions-v2.git'
       }
@@ -48,10 +48,10 @@ pipeline {
   }
 
   post('Clean Workspace') {
-    always {
-      echo "###Cleaning Workspace###"
-      cleanWs()
-    }
+    // always {
+    //   echo "###Cleaning Workspace###"
+    //   cleanWs()
+    // }
     success {
       echo '###Send Slack Notification###'
       slackSend(color: "good", message: "Job '${env.JOB_NAME}' '${env.Action}' was Successful")
