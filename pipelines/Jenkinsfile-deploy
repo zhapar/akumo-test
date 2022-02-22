@@ -48,10 +48,10 @@ pipeline {
   }
 
   post('Clean Workspace') {
-    // always {
-    //   echo "###Cleaning Workspace###"
-    //   cleanWs()
-    // }
+    always {
+      echo "###Cleaning Workspace###"
+      cleanWs()
+    }
     success {
       echo '###Send Slack Notification###'
       slackSend(color: "good", message: "Job '${env.JOB_NAME}' '${env.Action}' was Successful")
