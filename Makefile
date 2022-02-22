@@ -5,8 +5,8 @@ SHELL := /bin/bash
 ecr-apply-dev:
 	cd terraform/shared; tfswitch; terraform init
 	cd terraform/shared; tfswitch; terraform validate
-	cd terraform/shared; tfswitch; terraform plan -var-file='dev.tfvars'
-	cd terraform/shared; tfswitch; terraform apply -var-file='dev.tfvars' -auto-approve
+	cd terraform/shared; tfswitch; terraform plan -var-file='akumosolutions.tfvars'
+	cd terraform/shared; tfswitch; terraform apply -var-file='akumosolutions.tfvars' -auto-approve
 
 ecr-apply-prod:
 	cd terraform/shared; tfswitch; terraform init
