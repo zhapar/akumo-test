@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "ecs_agent" {
 
     principals {
       type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      identifiers = ["ecs.amazonaws.com"]
     }
   }
 }
@@ -17,7 +17,7 @@ resource "aws_iam_role" "ecs_agent" {
 
 resource "aws_iam_role_policy_attachment" "ecs_agent_attachment" {
   role       = aws_iam_role.ecs_agent.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
+  policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AmazonECSServiceRolePolicy"
 }
 
 resource "aws_iam_policy" "ecs_cross_account_assume_role" {

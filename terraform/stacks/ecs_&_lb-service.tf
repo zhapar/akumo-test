@@ -3,6 +3,7 @@ resource "aws_ecs_service" "ecs-ec2-akumotech-akumosolutions" {
   cluster         = aws_ecs_cluster.ecs-ec2-akumotech.id
   task_definition = aws_ecs_task_definition.task_definition_akumosolutions.arn
   desired_count   = 1
+  iam_role        = aws_iam_role.ecs_agent.arn
 
   network_configuration {
     subnets          = ["subnet-041a82b4a7e278099"]
