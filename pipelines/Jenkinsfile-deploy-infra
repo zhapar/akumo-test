@@ -30,7 +30,7 @@ pipeline {
 
     stage('ECR Apply') {
       steps {
-          sh 'make ecr-apply-dev'
+          sh 'make ecr-apply-shared'
       }
     }
 
