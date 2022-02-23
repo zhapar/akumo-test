@@ -4,20 +4,6 @@ pipeline {
   ansiColor('xterm')
   }
   stages{
-    stage('Setup Parameters') {
-      steps {
-        script {
-          properties([
-            parameters([
-              choice(
-                choices: ['build'],
-                name: 'Action'
-              )
-            ])
-          ])
-        }
-      }
-    }
 
     stage('Clone Repo') {
       steps {
