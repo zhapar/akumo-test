@@ -4,7 +4,6 @@ pipeline {
   ansiColor('xterm')
   }
   stages{
-
     stage('Clone Repo') {
       steps {
         echo "###Cleaning Workspace###"
