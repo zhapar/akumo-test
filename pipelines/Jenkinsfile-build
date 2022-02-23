@@ -21,7 +21,7 @@ pipeline {
     
     stage('Trigger Build') {
       steps {
-         build job: 'akumosolutions-deploy-app'
+        build job: 'akumosolutions-deploy-app'
       }
     }
   }
