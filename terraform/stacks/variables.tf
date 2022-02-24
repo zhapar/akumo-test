@@ -29,3 +29,7 @@ variable "ag_vpc_identifier" {}
 variable "ag_desired_capacity" {}
 variable "ag_min_size" {}
 variable "ag_max_size" {}
+
+## ROUTE_53
+variable "domain_name" {}
+variable "hosted_zone_id" {}
