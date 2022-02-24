@@ -28,4 +28,4 @@ ag_max_size         = 2
 
 ## ROUTE_53
 domain_name    = "dev.akumosolutions.io"
-hosted_zone_id = ""
+hosted_zone_id = "Z0194109MAY7X2KANL5N"
