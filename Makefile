@@ -2,10 +2,10 @@ SHELL := /bin/bash
 
 ## DOCKER (ECR)
 ecr-apply-shared:
-	cd terraform/shared; tfswitch; terraform init
-	cd terraform/shared; tfswitch; terraform validate
-	cd terraform/shared; tfswitch; terraform plan -var-file='akumosolutions.tfvars'
-	cd terraform/shared; tfswitch; terraform apply -var-file='akumosolutions.tfvars' -auto-approve
+	cd terraform/shared; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform init
+	cd terraform/shared; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform validate
+	cd terraform/shared; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform plan -var-file='akumosolutions.tfvars'
+	cd terraform/shared; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform apply -var-file='akumosolutions.tfvars' -auto-approve
 
   ## BUILD
 ecr-build:
@@ -27,28 +27,28 @@ ecr-build:
   ## DEV-PLAY-APP
 deploy-app-dev:
 	$(eval ECR_IMAGE_VERSION := "$(shell git rev-parse HEAD)")
-	cd terraform/stacks; tfswitch; terraform init
-	cd terraform/stacks; tfswitch; terraform plan -target="aws_ecs_task_definition.task_definition_akumosolutions" -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars'
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform init
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform plan -target="aws_ecs_task_definition.task_definition_akumosolutions" -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars'
 
   ## DEV
 plan-dev:
 	$(eval ECR_IMAGE_VERSION := "$(shell git rev-parse HEAD)")
-	cd terraform/stacks; tfswitch; terraform init
-	cd terraform/stacks; tfswitch; terraform plan -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars'
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform init
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform plan -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars'
 
 apply-dev:
 	$(eval ECR_IMAGE_VERSION := "$(shell git rev-parse HEAD)")
-	cd terraform/stacks; tfswitch; terraform init
-	cd terraform/stacks; tfswitch; terraform apply -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars' -auto-approve
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform init
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform apply -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='dev.tfvars' -auto-approve
 
   ## PROD
 plan-prod:
 	$(eval ECR_IMAGE_VERSION := "$(shell git rev-parse HEAD)")
-	cd terraform/stacks; tfswitch; terraform init
-	cd terraform/stacks; tfswitch; terraform plan -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='env/prod.tfvars'
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform init
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform plan -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='env/prod.tfvars'
 
 
 apply-prod:
 	$(eval ECR_IMAGE_VERSION := "$(shell git rev-parse HEAD)")
-	cd terraform/stacks; tfswitch; terraform init
-	cd terraform/stacks; tfswitch; terraform apply -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='env/prod.tfvars' -auto-approve
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform init
+	cd terraform/stacks; tfswitch; sudo cp ~/bin/terraform /usr/local/bin/terraform; terraform apply -var='ecs_image_tag'=$(ECR_IMAGE_VERSION) -var-file='env/prod.tfvars' -auto-approve

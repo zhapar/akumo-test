@@ -11,7 +11,15 @@ terraform {
 
 provider "aws" {
   region = var.region
-  assume_role {
-    role_arn = "arn:aws:iam::140316374689:role/TerraformExecutionRole"
+  assume_role { role_arn = "arn:aws:iam::140316374689:role/TerraformExecutionRole" }
+  default_tags {
+    tags = {
+      Project   = aKumoTechnology-ECS
+      Team      = "Infra"
+      Env       = "Dev"
+      Owner     = "asharif@akumosolutions.io"
+      ManagedBy = "Terraform"
+      GitUrl    = "https://github.com/akumotech/akumosolutions-v2"
+    }
   }
 }

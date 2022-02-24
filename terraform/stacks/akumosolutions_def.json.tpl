@@ -1,6 +1,6 @@
 [
   {
-    "name": "akumosolutions-dev-container",
+    "name": "{NAME}",
     "image": "${REPOSITORY_URL}:${ECS_IMAGE_TAG}",
     "entryPoint": [],
     "environment": [],

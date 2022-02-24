@@ -15,7 +15,6 @@ resource "aws_ecs_service" "ecs-ec2-akumotech-akumosolutions" {
     container_name   = "akumosolutions-${var.environment}-container"
     container_port   = 3000
   }
-
 }
 
 resource "aws_alb" "application_load_balancer" {
