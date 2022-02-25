@@ -15,6 +15,11 @@ ecr-build:
 	sudo docker build -t $(IMAGE_URL):$(IMAGE_TAG) .
 	sudo docker push $(IMAGE_URL):$(IMAGE_TAG)
 
+tag-dev:
+	$(eval COMMIT := $(shell git rev-parse --short HEAD))
+	$(eval DATE := $(shell git log -1 --format=%cd --date=format:"%Y%m%d"))
+	git tag $(DATE)
+
 #   ## PUSH
 # ecr-deploy:
 # 	$(eval IMAGE_TAG := "$(shell git rev-parse HEAD)")
