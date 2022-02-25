@@ -9,8 +9,8 @@ ecs_image_url      = "100209986082.dkr.ecr.us-east-1.amazonaws.com/akumosolution
 
 ## TASK DEFINITION VARS
 task_def_family = "akumosolutions"
-task_def_memory = "512"
-task_def_cpu    = "512"
+task_def_memory = 512
+task_def_cpu    = 512
 
 ## Launch Configuration (lg)
 ecs_lg_name     = "ecs_launch_config"
