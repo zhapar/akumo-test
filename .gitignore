@@ -18,11 +18,11 @@ build
 *.tfstate.*
 
 # next.js
-/app/.next/
-/app/out/
+.next/
+out/
 
 # production
-/app/build
+build
 
 # misc
 .DS_Store
@@ -34,10 +34,12 @@ build
 /app/yarn-error.log*
 
 # local env files
-/app/*.env.local
-/app/*.env.development.local
-/app/*.env.test.local
-/app/*.env.production.local
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # vercel
 .vercel
