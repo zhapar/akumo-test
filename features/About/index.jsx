@@ -24,6 +24,7 @@ function About() {
           src="/cloud-management.svg"
           layout="fill"
           quality={100}
+          priority
           alt="Cloud Management"
           className="w-full h-full object-contain"
         />

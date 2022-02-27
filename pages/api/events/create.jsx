@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { validate } from 'middlewares/validate'
-import { eventSchema } from 'schemas/event'
+import { backendEventSchema } from 'schemas/event'
 
 async function createEvent(req, res) {
   if (req.method === 'POST') {
@@ -26,4 +26,4 @@ async function createEvent(req, res) {
   }
 }
 
-export default validate(eventSchema, createEvent)
+export default validate(backendEventSchema, createEvent)

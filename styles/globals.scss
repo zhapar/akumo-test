@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -59,21 +58,30 @@ p {
     @apply text-base sm:text-lg leading-xl;
   }
 
-  &.body-sm{
+  &.body-sm {
     @apply text-sm leading-base;
   }
 }
 
 .container {
-  @apply  max-w-5xl mx-auto px-4 w-full;
+  @apply max-w-5xl mx-auto px-4 w-full;
 }
 
 .container-sm {
-  @apply  max-w-2xl mx-auto;
+  @apply max-w-2xl mx-auto;
 }
 
 .service-card {
-  background: radial-gradient(96.97% 272.07% at 1.69% 3.24%, #8D8EC9 0%, #B590BC 66.43%, #B590BC 99.99%);
+  background: radial-gradient(
+    96.97% 272.07% at 1.69% 3.24%,
+    #8d8ec9 0%,
+    #b590bc 66.43%,
+    #b590bc 99.99%
+  );
   box-shadow: 5px 5px 10px rgba(44, 58, 75, 0.3);
 }
 
+.Toastify__toast-theme--light {
+  background-color: #f5faff;
+  color: #000;
+}
