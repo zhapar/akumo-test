@@ -1,9 +1,40 @@
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Image from 'next/image'
-import React from 'react'
+import { Formik, Form, Field } from 'formik'
+import { subscriptionSchema } from 'schemas/subscription'
+import { useMutation } from 'react-query'
+import { toast } from 'react-toastify'
 
 function Subscription() {
+  const createSubscription = async (subscription) => {
+    const response = await fetch('/api/subscription/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ subscription }),
+    })
+
+    const data = response.json()
+    return data
+  }
+
+  const { mutateAsync } = useMutation(createSubscription, {
+    onSuccess: () => {
+      toast.success('You successfully subscribed for new events!')
+    },
+    onError: () => {
+      toast.error("Couldn't subscribe for new events")
+    },
+  })
+
+  const onSubmit = async (values, actions) => {
+    await mutateAsync(values)
+    actions.setSubmitting(false)
+    actions.resetForm()
+  }
+
   return (
     <section
       id="subscription"
@@ -23,12 +54,27 @@ function Subscription() {
           Get technology news and updates on exciting new offers and services
           from aKumoSolutions!
         </p>
-        <Input
-          name="subsription-email"
-          className="mt-5"
-          placeholder="Your email"
-        />
-        <Button className="mt-6">Subscribe</Button>
+        <Formik
+          initialValues={{
+            email: '',
+          }}
+          validationSchema={subscriptionSchema}
+          onSubmit={onSubmit}>
+          {({ errors, touched }) => (
+            <Form>
+              <Field
+                as={Input}
+                name="email"
+                className="mt-5"
+                placeholder="Your email"
+                error={errors.email && touched.email ? errors.email : null}
+              />
+              <Button className="mt-6" type="submit">
+                Subscribe
+              </Button>
+            </Form>
+          )}
+        </Formik>
       </div>
     </section>
   )

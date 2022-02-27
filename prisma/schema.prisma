@@ -10,6 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Subscription {
+  subscription_id String @id @default(uuid())
+  email           String @db.VarChar(150)
+}
+
 model Event {
   event_id      String   @id @default(uuid())
   host_name     String   @db.VarChar(100)

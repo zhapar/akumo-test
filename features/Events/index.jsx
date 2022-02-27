@@ -1,12 +1,10 @@
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Image from 'next/image'
-import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { eventSchema } from 'schemas/event'
 import { useMutation } from 'react-query'
 import { toast } from 'react-toastify'
-import SubmitButton from 'components/SubmitButton'
 
 function Events() {
   const createEvent = async (event) => {
@@ -22,7 +20,7 @@ function Events() {
     return data
   }
 
-  const { mutateAsync, isLoading, isSuccess } = useMutation(createEvent, {
+  const { mutateAsync } = useMutation(createEvent, {
     onSuccess: () => {
       toast.success('The event is submitted successfully!')
     },
